@@ -1,4 +1,5 @@
 const express = require('express');
+const product = require('./api/product');
 const app = express();
 const { MongoClient } = require('mongodb');
 const port = process?.env?.PORT || 5000;
@@ -9,9 +10,9 @@ require("dotenv").config();
 // middleware
 app.use(cors());
 app.use(express.json());
-// app.use("/api/product", product);
-// 
-// 
+app.use("/api/product", product);
+
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.li11u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 async function run() {
