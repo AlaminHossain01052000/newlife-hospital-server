@@ -1,31 +1,15 @@
 {
     "version": 2,
-    "rewrites": [
+    "builds": [
         {
-            "source": "/(api|organization-avatar|avatar)/(.*)",
-            "destination": "https://sentry.io/$1/$2"
-        },
-        {
-            "source": "/_assets/(.*)",
-            "destination": "/$1"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "./index.js",
+            "use": "@vercel/node"
         }
     ],
-    "headers": [
+    "routes": [
         {
-            "source": "/api/(.*)",
-            "headers": [
-                {
-                    "key": "Referer",
-                    "value": "https://sentry.io/"
-                }
-            ]
+            "src": "/(.*)",
+            "dest": "/"
         }
-    ],
-    "github": {
-        "silent": true
-    }
+    ]
 }
